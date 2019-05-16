@@ -5,7 +5,8 @@ __pycache__/
 
 # C extensions
 *.so
-
+local_setting.py
+utils/key/
 # Distribution / packaging
 .Python
 build/
