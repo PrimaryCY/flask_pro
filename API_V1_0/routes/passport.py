@@ -128,7 +128,9 @@ class SessionView(View):
         return {'errno':RET.OK,'msg':'登录成功'}
 
     def delete(self):
+        csrf_token=session.get('csrf_token')
         session.clear()
+        session['csrf_token']=csrf_token
         return {'errno':RET.OK,'msg':True}
 
     @property

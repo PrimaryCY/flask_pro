@@ -13,7 +13,7 @@ class BaseSetting(object):
     # 动态追踪修改设置，如未设置只会提示警告
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     #查询时会显示原始SQL语句
-    SQLALCHEMY_ECHO = False
+    SQLALCHEMY_ECHO = True
     #数据库连接池的大小。默认是数据库引擎的默认值 （通常是 5）。
     SQLALCHEMY_POOL_SIZE = 10
     #可以省去db.session.commit()的操作

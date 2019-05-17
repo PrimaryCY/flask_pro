@@ -263,14 +263,15 @@ class HouseListView(View):
             fina_filter.append(House.area_id==area_id)
 
         try:
-            not_in_house_ids=db.session.query(Order.house_id).filter(*filter_params).scalar()
+            not_in_house_ids=db.session.query(Order.house_id).filter(*filter_params).all()
             print(not_in_house_ids)
         except  Exception as e:
             raise e
             return {'errno':RET.PARAMERR,'msg':'数据库查询错误'}
 
-        if not isinstance(not_in_house_ids,(list,tuple)):
-            not_in_house_ids=[not_in_house_ids]
+        # if not isinstance(not_in_house_ids,(list,tuple)):
+        #     not_in_house_ids=[not_in_house_ids]
+        not_in_house_ids=[i[0] for i in not_in_house_ids]
 
         if not_in_house_ids:
             fina_filter.append(House.id.notin_(not_in_house_ids))
